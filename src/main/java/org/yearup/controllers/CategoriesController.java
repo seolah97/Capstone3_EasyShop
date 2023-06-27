@@ -1,6 +1,7 @@
 package org.yearup.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.yearup.data.CategoryDao;
@@ -26,16 +27,16 @@ public class CategoriesController
 
     // create an Autowired controller to inject the categoryDao and ProductDao
     @Autowired
-    public CategoriesController(CategoryDao categoryDao) { this.categoryDao = categoryDao; }
-
-    @Autowired
-    public CategoriesController(ProductDao productDao) { this.productDao = productDao; }
+    public CategoriesController(CategoryDao categoryDao, ProductDao productDao) {
+        this.categoryDao = categoryDao;
+        this.productDao = productDao;
+    }
 
     // add the appropriate annotation for a get action
     @GetMapping
     public List<Category> getAll()
     {  // find and return all categories
-        return categoryDao.getAllCategories();
+        return categoryDao.getAll();
     }
 
     // add the appropriate annotation for a get action
@@ -47,11 +48,11 @@ public class CategoriesController
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
-    @GetMapping("{categoryId}/products")
-    public List<Product> getProductsById(@PathVariable int categoryId)
-    {  // get a list of product by categoryId
-        return null;
-    }
+//    @GetMapping("{categoryId}/products")
+//    public List<Product> getProductsById(@PathVariable int categoryId)
+//    {  // get a list of product by categoryId
+//        return null;
+//    }
 
     // add annotation to call this method for a POST action
     // add annotation to ensure that only an ADMIN can call this function
@@ -75,6 +76,7 @@ public class CategoriesController
     // add annotation to ensure that only an ADMIN can call this function
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable int id)
     {  // delete the category by id
         categoryDao.delete(id);
