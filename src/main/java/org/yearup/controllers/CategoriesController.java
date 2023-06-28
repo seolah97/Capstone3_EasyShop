@@ -37,6 +37,7 @@ public class CategoriesController
 
     // add the appropriate annotation for a get action
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public Category getById(@PathVariable int id)
     {  // get the category by id
         return categoryDao.getById(id);
@@ -44,11 +45,11 @@ public class CategoriesController
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
-//    @GetMapping("{categoryId}/products")
-//    public List<Product> getProductsById(@PathVariable int categoryId)
-//    {  // get a list of product by categoryId
-//        return null;
-//    }
+    @GetMapping("{categoryId}/products")
+    public List<Product> getProductsById(@PathVariable int categoryId)
+    {  // get a list of product by categoryId
+        return this.productDao.listByCategoryId(categoryId);
+    }
 
     // add annotation to call this method for a POST action
     // add annotation to ensure that only an ADMIN can call this function
@@ -77,4 +78,6 @@ public class CategoriesController
     {  // delete the category by id
         categoryDao.delete(id);
     }
+
+
 }
