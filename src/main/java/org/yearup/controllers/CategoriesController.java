@@ -12,10 +12,6 @@ import org.yearup.models.Product;
 import java.util.HashMap;
 import java.util.List;
 
-// add the annotations to make this a REST controller
-// add the annotation to make this controller the endpoint for the following url
-    // http://localhost:8080/categories
-// add annotation to allow cross site origin requests
 @RestController
 @RequestMapping("/categories")
 @CrossOrigin
@@ -36,7 +32,7 @@ public class CategoriesController
     @GetMapping
     public List<Category> getAll()
     {  // find and return all categories
-        return categoryDao.getAll();
+        return categoryDao.getAllCategories();
     }
 
     // add the appropriate annotation for a get action
