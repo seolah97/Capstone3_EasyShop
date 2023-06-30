@@ -54,9 +54,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
                 Product product = mapRow(row);
                 products.add(product);
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return products;
@@ -82,9 +80,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
                 Product product = mapRow(row);
                 products.add(product);
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -107,9 +103,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
             {
                 return mapRow(row);
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return null;
@@ -148,9 +142,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
                     return getById(orderId);
                 }
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return null;
@@ -184,9 +176,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
             statement.setInt(9, productId);
 
             statement.executeUpdate();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -204,9 +194,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
             statement.setInt(1, productId);
 
             statement.executeUpdate();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -215,7 +203,7 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
     public List<Product> getProductsByCategoryId(int categoryId) {
         List<Product> products = new ArrayList<>();
 
-        String sql = "SELECT * FROM products WHERE category_id = ?; ";
+        String sql = "SELECT * FROM products WHERE category_id = ? ORDER BY product_id; ";
 
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
