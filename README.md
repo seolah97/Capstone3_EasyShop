@@ -1,12 +1,13 @@
 # Capstone3_EasyShop
 
+The E-Commerce API is a RESTful web service that provides endpoints for managing products, user accounts, and shopping carts in an e-commerce application. It allows users to browse and search for products, add products to their shopping carts, and perform various operations related to user accounts and orders.
+
 Used an existing coding project to experience one of the jobs a backend programmer may have.
 
-Finished writing and implementing code for certain controllers class, as well as the mySQL classes.
+Finished writing and implementing code for the appropriate classes, while fixing bugs.
 
-Utilized postman by connecting it to the project by using the appropriate annotations.
-	Tested the methods and queries to make sure they are working as intended. 
-	Also used it to test for bugs.
+Utilized postman by connecting it to the project by using the appropriate annotations and HTTP requests.
+	Tested the methods and queries to make sure they are working as intended, while fixing bugs. 
 
 REGISTER WORKING
 ![image](https://github.com/seolah97/Capstone3_EasyShop/assets/130181133/2b303337-a737-42c8-9693-ee998f01997a)
