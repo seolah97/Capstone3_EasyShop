@@ -9,9 +9,6 @@ Finished writing and implementing code for the appropriate classes, while fixing
 Utilized postman by connecting it to the project by using the appropriate annotations and HTTP requests.
 	Tested the methods and queries to make sure they are working as intended, while fixing bugs. 
 
-REGISTER WORKING
-![image](https://github.com/seolah97/Capstone3_EasyShop/assets/130181133/2b303337-a737-42c8-9693-ee998f01997a)
-
 
 LOGIN AS ADMIN
 ![image](https://github.com/seolah97/Capstone3_EasyShop/assets/130181133/5a31792e-df6c-4cb0-a133-a99b45c33337)
