@@ -22,21 +22,21 @@ public class CategoriesController
     private ProductDao productDao;
 
 
-    // create an Autowired controller to inject the categoryDao and ProductDao
+    // Constructor injection for categoryDao & ProductDao
     @Autowired
     public CategoriesController(CategoryDao categoryDao, ProductDao productDao) {
         this.categoryDao = categoryDao;
         this.productDao = productDao;
     }
 
-    // add the appropriate annotation for a get action
+    // Retrieves all categories from the database
     @GetMapping
     public List<Category> getAll()
     {  // find and return all categories
         return categoryDao.getAllCategories();
     }
 
-    // add the appropriate annotation for a get action
+    // Retrieves a specific category by its ID
     @GetMapping("/{id}")
     public Category getById(@PathVariable int id)
     {  // get the category by id
@@ -45,14 +45,14 @@ public class CategoriesController
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
+    // Retrieves a list of product by categoryId
     @GetMapping("{categoryId}/products")
     public List<Product> getProductsById(@PathVariable int categoryId)
-    {  // get a list of product by categoryId
+    {
         return this.productDao.listByCategoryId(categoryId);
     }
 
-    // add annotation to call this method for a POST action
-    // add annotation to ensure that only an ADMIN can call this function
+    // Adds a new category to the database
     @PostMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Category addCategory(@RequestBody Category category) {
@@ -64,8 +64,7 @@ public class CategoriesController
         }
     }
 
-    // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
-    // add annotation to ensure that only an ADMIN can call this function
+    // Update a category by its ID
     @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void updateCategory(@PathVariable int id, @RequestBody Category category) {
@@ -77,8 +76,7 @@ public class CategoriesController
         }
     }
 
-    // add annotation to call this method for a DELETE action - the url path must include the categoryId
-    // add annotation to ensure that only an ADMIN can call this function
+    // Delete a category by its ID
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
